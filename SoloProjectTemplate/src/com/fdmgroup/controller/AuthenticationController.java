@@ -1,13 +1,11 @@
 package com.fdmgroup.controller;
 
 import com.fdmgroup.dao.IUserDao;
-import com.fdmgroup.model.User;
+import com.fdmgroup.model.Employee;
 import com.fdmgroup.model.UserSession;
-import com.fdmgroup.model.UserType;
 import com.fdmgroup.view.AdminDashboardView;
 import com.fdmgroup.view.CustomerDashboardView;
 import com.fdmgroup.view.CustomerSupportDashboardView;
-import com.fdmgroup.view.DashboardView;
 import com.fdmgroup.view.HomeView;
 
 public class AuthenticationController {
@@ -29,20 +27,20 @@ public class AuthenticationController {
 	}
 
 	public void login(String username, String password) {
-		User user = userDao.findByUsername(username);
+		Employee user = userDao.findByUsername(username);
 		if (user != null && user.getPassword().equals(password)) {
 			UserSession.setLoggedInUser(user);
 			
-			System.out.println(user.getType());
-			if (user.getType() == UserType.ADMIN){
-				admindashboardView.showDashboard();
-			}
-			else if (user.getType() == UserType.CUSTOMER_SUPPORT){
-				customersupportdashboardview.showDashboard();
-			}
-			else if (user.getType() == UserType.CUSTOMER){
-				customerdashboardview.showDashboard();
-			}
+//			System.out.println(user.getType());
+//			if (user.getType() == EmployeeType.ADMIN){
+//				admindashboardView.showDashboard();
+//			}
+//			else if (user.getType() == EmployeeType.HR || user.getType() == EmployeeType.IT){
+//				customersupportdashboardview.showDashboard();
+//			}
+//			else if (user.getType() == EmployeeType.EMPLOYEE){
+//				customerdashboardview.showDashboard();
+//			}
 //			dashboardView.showDashboard();
 			return;
 		}

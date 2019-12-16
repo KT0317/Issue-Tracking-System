@@ -3,19 +3,19 @@ package com.fdmgroup.view;
 import java.util.Scanner;
 
 import com.fdmgroup.controller.AuthenticationController;
-import com.fdmgroup.controller.CustomerSupportController;
+import com.fdmgroup.controller.SupportController;
 import com.fdmgroup.model.UserSession;
 
 public class CustomerSupportDashboardView extends DashboardView{
 
 	private AuthenticationController authenticationController;
-	private CustomerSupportController customerSupportController;
+	private SupportController customerSupportController;
 	
-	public CustomerSupportController getCustomerSupportController() {
+	public SupportController getCustomerSupportController() {
 		return customerSupportController;
 	}
 
-	public void setCustomerSupportController(CustomerSupportController customerSupportController) {
+	public void setCustomerSupportController(SupportController customerSupportController) {
 		this.customerSupportController = customerSupportController;
 	}
 

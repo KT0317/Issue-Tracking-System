@@ -1,16 +1,19 @@
 package com.fdmgroup.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.fdmgroup.util.IdGenerator;
 
 @Entity
 @Table(name = "ITS_TICKET")
 public class Ticket implements IStorable{
 
 	@Id
+	@Column(name = "ticket_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int ticket_id;
 	private int customer_id;
 	private int priority;
@@ -25,13 +28,12 @@ public class Ticket implements IStorable{
 	}
 	
 	public Ticket(int customer_id, String issueDescription, Department dept) {
-		this(IdGenerator.generate(), customer_id, 1, issueDescription, dept, TicketStatus.UNASSIGNED, null, 0);
+		this(customer_id, 1, issueDescription, dept, TicketStatus.UNASSIGNED, null, 0);
 	}
 
-	public Ticket(int ticket_id, int customer_id, int priority, String issueDescription, Department dept, TicketStatus status,
+	public Ticket(int customer_id, int priority, String issueDescription, Department dept, TicketStatus status,
 			String feedback, int rating) {
 		super();
-		this.ticket_id = ticket_id;
 		this.customer_id = customer_id;
 		this.priority = priority;
 		this.issueDescription = issueDescription;
